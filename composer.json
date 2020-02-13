@@ -32,7 +32,8 @@
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
         "symfony/phpunit-bridge": "^3.0",
-        "symfony/web-server-bundle": "3.4.37"
+        "symfony/web-server-bundle": "3.4.37",
+        "doctrine/doctrine-fixtures-bundle": "^3.3"
     },
     "scripts": {
         "symfony-scripts": [
