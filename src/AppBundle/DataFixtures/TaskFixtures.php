@@ -4,6 +4,7 @@
 namespace AppBundle\DataFixtures;
 
 use AppBundle\Entity\Task;
+use AppBundle\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
@@ -21,6 +22,8 @@ class TaskFixtures extends Fixture implements DependentFixtureInterface
 
     public function load(ObjectManager $manager)
     {
+        $users = [];
+
         for ($i = 1; $i < 20; $i++) {
             $task = new Task();
             $task->setTitle('Tâche numéro '.$i);
