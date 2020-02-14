@@ -20,8 +20,6 @@ class TaskFixtures extends Fixture implements DependentFixtureInterface
 
     public function load(ObjectManager $manager)
     {
-        $users = [];
-
         for ($i = 1; $i < 20; $i++) {
             $task = new Task();
             $task->setTitle('Tâche numéro '.$i);
