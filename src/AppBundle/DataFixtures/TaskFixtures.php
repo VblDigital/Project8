@@ -16,14 +16,11 @@ class TaskFixtures extends Fixture implements DependentFixtureInterface
      */
     public function getDependencies ()
     {
-        return array(
-            UserFixtures::class);
+        return array(UserFixtures::class);
     }
 
     public function load(ObjectManager $manager)
     {
-        $users = [];
-
         for ($i = 1; $i < 20; $i++) {
             $task = new Task();
             $task->setTitle('Tâche numéro '.$i);
