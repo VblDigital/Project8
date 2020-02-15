@@ -49,6 +49,9 @@ class TaskController extends Controller
 
     /**
      * @Route("/tasks/{id}/edit", name="task_edit")
+     * @param Task $task
+     * @param Request $request
+     * @return RedirectResponse|Response
      */
     public function editAction(Task $task, Request $request)
     {
@@ -72,6 +75,8 @@ class TaskController extends Controller
 
     /**
      * @Route("/tasks/{id}/toggle", name="task_toggle")
+     * @param Task $task
+     * @return RedirectResponse
      */
     public function toggleTaskAction(Task $task)
     {
@@ -85,9 +90,20 @@ class TaskController extends Controller
 
     /**
      * @Route("/tasks/{id}/delete", name="task_delete")
+     * @param Task $task
+     * @return RedirectResponse
      */
     public function deleteTaskAction(Task $task)
     {
+        if ($task->getAuthor()->getUsername() == 'Anonymous' && !$this->isGranted('ROLE_ADMIN')){
+            $this->addFlash('error', sprintf('Seuls les profils Admin peuvent supprimer les tâches non attribuées.'));
+            return $this->redirectToRoute('task_list');
+        }
+        if ($this->getUser() != $task->getAuthor() && !$this->isGranted('ROLE_ADMIN')){
+            $this->addFlash('error', sprintf('Vous ne pouvez pas supprimer les tâches d\'un autre utilisateur.'));
+            return $this->redirectToRoute('task_list');
+        }
+
         $em = $this->getDoctrine()->getManager();
         $em->remove($task);
         $em->flush();
