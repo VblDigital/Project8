@@ -51,16 +51,13 @@ class User implements UserInterface
      */
     private $roles;
 
-    /**
-     * User constructor.
-     */
     public function __construct()
     {
         $this->tasks = new ArrayCollection();
     }
 
     /**
-     * @return mixed
+     * @return integer
      */
     public function getId()
     {
@@ -108,7 +105,7 @@ class User implements UserInterface
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getEmail()
     {
@@ -124,7 +121,7 @@ class User implements UserInterface
     }
 
     /**
-     * @return mixed
+     * @return array
      */
     public function getRoles()
     {
