@@ -4,6 +4,7 @@
 namespace AppBundle\DataFixtures;
 
 use AppBundle\Entity\Task;
+use AppBundle\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
@@ -15,8 +16,7 @@ class TaskFixtures extends Fixture implements DependentFixtureInterface
      */
     public function getDependencies ()
     {
-        return array(
-            UserFixtures::class);
+        return array(UserFixtures::class);
     }
 
     public function load(ObjectManager $manager)

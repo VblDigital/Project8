@@ -47,8 +47,10 @@ class User implements UserInterface
     private $tasks;
 
     /**
-     * User constructor.
+     * @ORM\Column(type="array")
      */
+    private $roles;
+
     public function __construct()
     {
         $this->tasks = new ArrayCollection();
@@ -123,7 +125,18 @@ class User implements UserInterface
      */
     public function getRoles()
     {
-        return array('ROLE_USER');
+        return $this->roles;
+    }
+
+    /**
+     * @param array $roles
+     * @return User
+     */
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
     }
 
     public function eraseCredentials()
