@@ -6,6 +6,10 @@ namespace Tests\AppBundle\Entity;
 use AppBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
+/**
+ * Class UserTest
+ * @package Tests\AppBundle\Entity
+ */
 class UserTest extends KernelTestCase
 {
     /**
@@ -36,7 +40,7 @@ class UserTest extends KernelTestCase
         $this->assertCount($number, $error);
     }
 
-    public function testValidEntity()
+    public function testValidUserEntity()
     {
         $this->assertHasErrors($this->getUserEntity(
             'TestUsername',
@@ -75,6 +79,7 @@ class UserTest extends KernelTestCase
             ['ROLE_ADMIN']),
             1);
     }
+
 
     public function testBlankRole()
     {
