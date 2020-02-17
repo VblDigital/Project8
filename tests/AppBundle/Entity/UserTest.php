@@ -80,7 +80,6 @@ class UserTest extends KernelTestCase
             1);
     }
 
-
     public function testBlankRole()
     {
         $this->assertHasErrors($this->getUserEntity(
