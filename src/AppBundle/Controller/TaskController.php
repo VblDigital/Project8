@@ -24,6 +24,7 @@ class TaskController extends Controller
      * @Route("/tasks/create", name="task_create")
      * @param Request $request
      * @return RedirectResponse|Response
+     * @throws \Exception
      */
     public function createAction(Request $request)
     {
