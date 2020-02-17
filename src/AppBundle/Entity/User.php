@@ -128,6 +128,10 @@ class User implements UserInterface
         return $this->roles;
     }
 
+    /**
+     * @param array $roles
+     * @return User
+     */
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
