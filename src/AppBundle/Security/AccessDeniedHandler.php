@@ -10,6 +10,11 @@ use Symfony\Component\Security\Http\Authorization\AccessDeniedHandlerInterface;
 
 class AccessDeniedHandler implements AccessDeniedHandlerInterface
 {
+    /**
+     * @param Request $request
+     * @param AccessDeniedException $accessDeniedException
+     * @return Response|null
+     */
     public function handle(Request $request, AccessDeniedException $accessDeniedException)
     {
         $message = "L'accès à cette page est restreint";
