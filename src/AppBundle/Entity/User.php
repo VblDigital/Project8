@@ -48,6 +48,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="array")
+     * @Assert\NotBlank
      */
     private $roles;
 

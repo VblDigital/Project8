@@ -4,7 +4,6 @@
 namespace AppBundle\DataFixtures;
 
 use AppBundle\Entity\Task;
-use AppBundle\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
