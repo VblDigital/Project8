@@ -10,8 +10,8 @@ class TaskControllerTest extends WebTestCase
     public function setUp()
     {
         $client = static::createClient([], [
-            'PHP_AUTH_USER' => 'Test',
-            'PHP_AUTH_PW'   => 'test',
+            'PHP_AUTH_USER' => 'Admin',
+            'PHP_AUTH_PW'   => '123456',
         ]);
 
         return $client;
@@ -48,7 +48,7 @@ class TaskControllerTest extends WebTestCase
     public function testEditTaskIfLogged()
     {
         $client = $this->setUp();
-        $crawler = $client->request('GET', '/tasks/83/edit');
+        $crawler = $client->request('GET', '/tasks/1/edit');
         $this->assertSame(Response::HTTP_OK, $client->getResponse()->getStatusCode());
 
         $form = $crawler->selectButton('Modifier')->form([
@@ -65,7 +65,7 @@ class TaskControllerTest extends WebTestCase
     public function testToogleTaskActionIfLogged()
     {
         $client = $this->setUp();
-        $client->request('GET', '/tasks/83/toggle');
+        $client->request('GET', '/tasks/1/toggle');
 
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
@@ -76,7 +76,7 @@ class TaskControllerTest extends WebTestCase
     public function testDeleteTaskIfLogged()
     {
         $client = $this->setUp();
-        $client->request('GET', '/tasks/83/delete');
+        $client->request('GET', '/tasks/1/delete');
 
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 

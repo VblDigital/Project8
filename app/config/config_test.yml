@@ -19,3 +19,10 @@ security:
     firewalls:
         main:
             http_basic: ~
+doctrine:
+    # ...
+    dbal:
+        host:     localhost
+        dbname:   todolist-test
+        user:     root
+        password:

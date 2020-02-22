@@ -32,7 +32,7 @@ class UserControllerTest extends WebTestCase
         $client = $this->setUp();
         $crawler = $client->request('GET', '/users');
 
-        $this->assertSame(302, $client->getResponse()->getStatusCode());
+        $this->assertSame(200, $client->getResponse()->getStatusCode());
     }
 
     public function testCreateUserIfLogged()
@@ -58,7 +58,7 @@ class UserControllerTest extends WebTestCase
     public function testEditUserIfLogged()
     {
         $client = $this->setUp();
-        $crawler = $client->request('GET', '/users/36/edit');
+        $crawler = $client->request('GET', '/users/4/edit');
 
         $form = $crawler->selectButton('Modifier')->form([
             'user[password][first]' => 'password',
