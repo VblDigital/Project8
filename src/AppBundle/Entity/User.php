@@ -24,7 +24,7 @@ class User implements UserInterface
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=25, unique=true)
+     * @ORM\Column(type="string",     length=25, unique=true)
      * @Assert\NotBlank(message="Vous devez saisir un nom d'utilisateur.")
      */
     private $username;
@@ -35,9 +35,9 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=60, unique=true)
+     * @ORM\Column(type="string",     length=60, unique=true)
      * @Assert\NotBlank(message="Vous devez saisir une adresse email.")
-     * @Assert\Email(message="Le format de l'adresse n'est pas correct.")
+     * @Assert\Email(message="Le      format de l'adresse n'est pas correct.")
      */
     private $email;
 
@@ -130,7 +130,7 @@ class User implements UserInterface
     }
 
     /**
-     * @param array $roles
+     * @param  array $roles
      * @return User
      */
     public function setRoles(array $roles): self
@@ -153,26 +153,26 @@ class User implements UserInterface
     }
 
     /**
-     * @param Task $task
+     * @param  Task $task
      * @return User
      */
     public function addTask(Task $task): self
     {
-        if(!$this->tasks->contains($task)){
+        if(!$this->tasks->contains($task)) {
             $this->tasks[] = $task;
             $task->setAuthor($this);
         }
     }
 
     /**
-     * @param Task $task
+     * @param  Task $task
      * @return User
      */
     public function removeTask(Task $task): self
     {
         if($this->tasks->contains($task)) {
             $this->tasks->removeElement($task);
-            if($task->getAuthor() === $this){
+            if($task->getAuthor() === $this) {
                 $task->setAuthor(null);
             }
         }

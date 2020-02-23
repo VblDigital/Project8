@@ -13,7 +13,7 @@ class TaskFixtures extends Fixture implements DependentFixtureInterface
     /**
      * @return array
      */
-    public function getDependencies ()
+    public function getDependencies()
     {
         return array(UserFixtures::class);
     }

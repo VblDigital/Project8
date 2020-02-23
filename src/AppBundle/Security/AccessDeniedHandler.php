@@ -1,6 +1,5 @@
 <?php
 
-
 namespace AppBundle\Security;
 
 use Symfony\Component\HttpFoundation\Request;
@@ -11,8 +10,8 @@ use Symfony\Component\Security\Http\Authorization\AccessDeniedHandlerInterface;
 class AccessDeniedHandler implements AccessDeniedHandlerInterface
 {
     /**
-     * @param Request $request
-     * @param AccessDeniedException $accessDeniedException
+     * @param  Request               $request
+     * @param  AccessDeniedException $accessDeniedException
      * @return Response|null
      */
     public function handle(Request $request, AccessDeniedException $accessDeniedException)

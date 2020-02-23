@@ -135,7 +135,7 @@ class Task
     }
 
     /**
-     * @param User|null $author
+     * @param  User|null $author
      * @return Task
      */
     public function setAuthor(?User $author): self
