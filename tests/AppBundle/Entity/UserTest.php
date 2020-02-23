@@ -3,6 +3,7 @@
 
 namespace Tests\AppBundle\Entity;
 
+use AppBundle\Entity\Task;
 use AppBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 

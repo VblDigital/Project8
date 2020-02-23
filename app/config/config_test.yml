@@ -20,7 +20,6 @@ security:
         main:
             http_basic: ~
 doctrine:
-    # ...
     dbal:
         host:     localhost
         dbname:   todolist-test

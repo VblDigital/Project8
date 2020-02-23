@@ -15,14 +15,16 @@ class TaskTest extends KernelTestCase
     /**
      * @param $title
      * @param $content
+     * @param $createdAt
      * @return Task
      * @throws \Exception
      */
-    public function getTaskEntity($title, $content): Task
+    public function getTaskEntity($title, $content, $createdAt): Task
     {
         $task = new Task();
         $task->setTitle($title);
         $task->setContent($content);
+        $task->setCreatedAt($createdAt);
 
         return $task;
     }
@@ -44,7 +46,8 @@ class TaskTest extends KernelTestCase
     {
         $this->assertHasErrors($this->getTaskEntity(
             'A faire en premier',
-            'Je dois faire cette tâche en premier'),
+            'Je dois faire cette tâche en premier',
+            \DateTime::class),
             0);
     }
 
@@ -55,7 +58,8 @@ class TaskTest extends KernelTestCase
     {
         $this->assertHasErrors($this->getTaskEntity(
             '',
-            'Je dois faire cette tâche en premier'),
+            'Je dois faire cette tâche en premier',
+            \DateTime::class),
             1);
     }
 
@@ -66,7 +70,8 @@ class TaskTest extends KernelTestCase
     {
         $this->assertHasErrors($this->getTaskEntity(
             'A faire en premier',
-            ''),
+            '',
+            \DateTime::class),
             1);
     }
 }

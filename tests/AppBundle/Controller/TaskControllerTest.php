@@ -7,10 +7,20 @@ use Symfony\Component\HttpFoundation\Response;
 
 class TaskControllerTest extends WebTestCase
 {
-    public function setUp()
+    public function setUpAdmin()
     {
         $client = static::createClient([], [
             'PHP_AUTH_USER' => 'Admin',
+            'PHP_AUTH_PW'   => '123456',
+        ]);
+
+        return $client;
+    }
+
+    public function setUpUser()
+    {
+        $client = static::createClient([], [
+            'PHP_AUTH_USER' => 'Toto',
             'PHP_AUTH_PW'   => '123456',
         ]);
 
@@ -25,9 +35,9 @@ class TaskControllerTest extends WebTestCase
         $this->assertSame(302, $client->getResponse()->getStatusCode());
     }
 
-    public function testCreateTaskIfLogged()
+    public function testCreateTaskIfLoggedAndAdmin()
     {
-        $client = $this->setUp();
+        $client = $this->setUpAdmin();
         $crawler = $client->request('GET', '/tasks/create');
 
         $form = $crawler->selectButton('Ajouter')->form([
@@ -45,9 +55,9 @@ class TaskControllerTest extends WebTestCase
         $this->assertSame(1, $crawler->filter('div.alert.alert-success')->count());
     }
 
-    public function testEditTaskIfLogged()
+    public function testEditTaskIfLoggedAndAdmin()
     {
-        $client = $this->setUp();
+        $client = $this->setUpAdmin();
         $crawler = $client->request('GET', '/tasks/1/edit');
         $this->assertSame(Response::HTTP_OK, $client->getResponse()->getStatusCode());
 
@@ -62,9 +72,9 @@ class TaskControllerTest extends WebTestCase
         $this->assertSame(1, $crawler->filter('div.alert.alert-success')->count());
     }
 
-    public function testToogleTaskActionIfLogged()
+    public function testToogleTaskActionIfLoggedAndAdmin()
     {
-        $client = $this->setUp();
+        $client = $this->setUpAdmin();
         $client->request('GET', '/tasks/1/toggle');
 
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
@@ -73,14 +83,22 @@ class TaskControllerTest extends WebTestCase
         $this->assertSame(1, $crawler->filter('div.alert.alert-success')->count());
     }
 
-    public function testDeleteTaskIfLogged()
+    public function testDeleteTaskIfLoggedAndAdmin()
     {
-        $client = $this->setUp();
+        $client = $this->setUpAdmin();
         $client->request('GET', '/tasks/1/delete');
 
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
         $crawler = $client->followRedirect();
         $this->assertSame(1, $crawler->filter('div.alert.alert-success')->count());
+    }
+
+    public function testDeleteTaskIfLoggedIfNotAdmin()
+    {
+        $client = $this->setUpUser();
+        $client->request('GET', '/tasks/2/delete');
+
+        $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
     }
 }
