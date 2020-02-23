@@ -24,7 +24,6 @@ class SecurityControllerTest extends WebTestCase
         $client->submit($form);
 
         $crawler = $client->followRedirect();
-
         $this->assertSame(1, $crawler->count());
         }
 
