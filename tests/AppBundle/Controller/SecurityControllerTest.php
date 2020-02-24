@@ -25,9 +25,10 @@ class SecurityControllerTest extends WebTestCase
 
         $crawler = $client->followRedirect();
         $this->assertSame(1, $crawler->count());
-        }
+    }
 
-    public function testLogout(){
+    public function testLogout()
+    {
         $client = static::createClient();
 
         $client->request('GET', '/logout');

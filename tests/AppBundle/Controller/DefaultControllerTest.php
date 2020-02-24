@@ -8,11 +8,13 @@ class DefaultControllerTest extends WebTestCase
 {
     public function setUp()
     {
-        $client = static::createClient([], [
+        $client = static::createClient(
+            [], [
             'PHP_AUTH_USER' => 'Admin',
             'PHP_AUTH_PW'   => '123456',
             ''
-        ]);
+            ]
+        );
 
         return $client;
     }

@@ -13,10 +13,12 @@ class TaskFixturesTest extends WebTestCase
     public function testLoad()
     {
         $this->loadFixtures();
-        $this->loadFixtures(array(
+        $this->loadFixtures(
+            array(
             'AppBundle\DataFixtures\TaskFixtures',
             'AppBundle\DataFixtures\UserFixtures'
-        ));
+            )
+        );
 
         $client = $this->createClient();
         $crawler = $client->request('GET', '/users');

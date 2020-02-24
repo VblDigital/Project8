@@ -8,14 +8,15 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
  * Class TaskTest
+ *
  * @package Tests\AppBundle\Entity
  */
 class TaskTest extends KernelTestCase
 {
     /**
-     * @param $title
-     * @param $content
-     * @param $createdAt
+     * @param  $title
+     * @param  $content
+     * @param  $createdAt
      * @return Task
      * @throws \Exception
      */
@@ -31,7 +32,7 @@ class TaskTest extends KernelTestCase
 
     /**
      * @param Task $task
-     * @param int $number
+     * @param int  $number
      */
     public function assertHasErrors(Task $task, int $number = 0)
     {
@@ -44,11 +45,14 @@ class TaskTest extends KernelTestCase
      */
     public function testValidTaskEntity()
     {
-        $this->assertHasErrors($this->getTaskEntity(
-            'A faire en premier',
-            'Je dois faire cette tâche en premier',
-            \DateTime::class),
-            0);
+        $this->assertHasErrors(
+            $this->getTaskEntity(
+                'A faire en premier',
+                'Je dois faire cette tâche en premier',
+                \DateTime::class
+            ),
+            0
+        );
     }
 
     /**
@@ -56,11 +60,14 @@ class TaskTest extends KernelTestCase
      */
     public function testInvalidTitle()
     {
-        $this->assertHasErrors($this->getTaskEntity(
-            '',
-            'Je dois faire cette tâche en premier',
-            \DateTime::class),
-            1);
+        $this->assertHasErrors(
+            $this->getTaskEntity(
+                '',
+                'Je dois faire cette tâche en premier',
+                \DateTime::class
+            ),
+            1
+        );
     }
 
     /**
@@ -68,10 +75,13 @@ class TaskTest extends KernelTestCase
      */
     public function testBlankEmail()
     {
-        $this->assertHasErrors($this->getTaskEntity(
-            'A faire en premier',
-            '',
-            \DateTime::class),
-            1);
+        $this->assertHasErrors(
+            $this->getTaskEntity(
+                'A faire en premier',
+                '',
+                \DateTime::class
+            ),
+            1
+        );
     }
 }

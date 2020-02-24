@@ -9,20 +9,24 @@ class TaskControllerTest extends WebTestCase
 {
     public function setUpAdmin()
     {
-        $client = static::createClient([], [
+        $client = static::createClient(
+            [], [
             'PHP_AUTH_USER' => 'Admin',
             'PHP_AUTH_PW'   => '123456',
-        ]);
+            ]
+        );
 
         return $client;
     }
 
     public function setUpUser()
     {
-        $client = static::createClient([], [
+        $client = static::createClient(
+            [], [
             'PHP_AUTH_USER' => 'Toto',
             'PHP_AUTH_PW'   => '123456',
-        ]);
+            ]
+        );
 
         return $client;
     }
@@ -40,10 +44,12 @@ class TaskControllerTest extends WebTestCase
         $client = $this->setUpAdmin();
         $crawler = $client->request('GET', '/tasks/create');
 
-        $form = $crawler->selectButton('Ajouter')->form([
+        $form = $crawler->selectButton('Ajouter')->form(
+            [
             'task[title]' => 'New title',
             'task[content]' => 'New content',
-        ]);
+            ]
+        );
 
         $client->submit($form);
         $this->assertSame(
@@ -61,9 +67,11 @@ class TaskControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/tasks/1/edit');
         $this->assertSame(Response::HTTP_OK, $client->getResponse()->getStatusCode());
 
-        $form = $crawler->selectButton('Modifier')->form([
+        $form = $crawler->selectButton('Modifier')->form(
+            [
             'task[title]' => 'New title for the Task',
-        ]);
+            ]
+        );
         $client->submit($form);
 
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
