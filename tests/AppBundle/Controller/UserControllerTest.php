@@ -10,11 +10,13 @@ class UserControllerTest extends WebTestCase
 {
     public function setUp()
     {
-        $client = static::createClient([], [
+        $client = static::createClient(
+            [], [
             'PHP_AUTH_USER' => 'Admin',
             'PHP_AUTH_PW'   => '123456',
             ''
-        ]);
+            ]
+        );
 
         return $client;
     }
@@ -40,13 +42,15 @@ class UserControllerTest extends WebTestCase
         $client = $this->setUp();
         $crawler = $client->request('GET', '/users/create');
 
-        $form = $crawler->selectButton('Ajouter')->form([
+        $form = $crawler->selectButton('Ajouter')->form(
+            [
             'user[username]' => 'user-'.mt_rand(),
             'user[password][first]' => 'password',
             'user[password][second]' => 'password',
             'user[email]' => 'email'.mt_rand().'@mail.com',
             'user[roles]' => ['ROLE_USER'],
-        ]);
+            ]
+        );
 
         $client->submit($form);
         $this->assertSame(302, $client->getResponse()->getStatusCode());
@@ -60,11 +64,13 @@ class UserControllerTest extends WebTestCase
         $client = $this->setUp();
         $crawler = $client->request('GET', '/users/4/edit');
 
-        $form = $crawler->selectButton('Modifier')->form([
+        $form = $crawler->selectButton('Modifier')->form(
+            [
             'user[password][first]' => 'password',
             'user[password][second]' => 'password',
             'user[roles]' => ['ROLE_ADMIN'],
-        ]);
+            ]
+        );
 
         $client->submit($form);
         $this->assertSame(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());

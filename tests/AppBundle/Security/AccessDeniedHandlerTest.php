@@ -9,10 +9,12 @@ class AccessDeniedHandlerTest extends WebTestCase
 {
     public function setUp()
     {
-        $client = static::createClient([], [
+        $client = static::createClient(
+            [], [
             'PHP_AUTH_USER' => 'Toto',
             'PHP_AUTH_PW'   => '123456',
-        ]);
+            ]
+        );
 
         return $client;
     }

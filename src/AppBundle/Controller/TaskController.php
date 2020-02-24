@@ -22,9 +22,9 @@ class TaskController extends Controller
 
     /**
      * @Route("/tasks/create", name="task_create")
-     * @param Request $request
-     * @return RedirectResponse|Response
-     * @throws \Exception
+     * @param                  Request $request
+     * @return                 RedirectResponse|Response
+     * @throws                 \Exception
      */
     public function createAction(Request $request)
     {
@@ -50,9 +50,9 @@ class TaskController extends Controller
 
     /**
      * @Route("/tasks/{id}/edit", name="task_edit")
-     * @param Task $task
-     * @param Request $request
-     * @return RedirectResponse|Response
+     * @param                     Task    $task
+     * @param                     Request $request
+     * @return                    RedirectResponse|Response
      */
     public function editAction(Task $task, Request $request)
     {
@@ -68,16 +68,18 @@ class TaskController extends Controller
             return $this->redirectToRoute('task_list');
         }
 
-        return $this->render('task/edit.html.twig', [
+        return $this->render(
+            'task/edit.html.twig', [
             'form' => $form->createView(),
             'task' => $task,
-        ]);
+            ]
+        );
     }
 
     /**
      * @Route("/tasks/{id}/toggle", name="task_toggle")
-     * @param Task $task
-     * @return RedirectResponse
+     * @param                       Task $task
+     * @return                      RedirectResponse
      */
     public function toggleTaskAction(Task $task)
     {
@@ -91,16 +93,16 @@ class TaskController extends Controller
 
     /**
      * @Route("/tasks/{id}/delete", name="task_delete")
-     * @param Task $task
-     * @return RedirectResponse
+     * @param                       Task $task
+     * @return                      RedirectResponse
      */
     public function deleteTaskAction(Task $task)
     {
-        if ($task->getAuthor()->getUsername() == 'Anonymous' && !$this->isGranted('ROLE_ADMIN')){
+        if ($task->getAuthor()->getUsername() == 'Anonymous' && !$this->isGranted('ROLE_ADMIN')) {
             $this->addFlash('error', sprintf('Seuls les profils Admin peuvent supprimer les tâches non attribuées.'));
             return $this->redirectToRoute('task_list');
         }
-        if ($this->getUser() != $task->getAuthor() && !$this->isGranted('ROLE_ADMIN')){
+        if ($this->getUser() != $task->getAuthor() && !$this->isGranted('ROLE_ADMIN')) {
             $this->addFlash('error', sprintf('Vous ne pouvez pas supprimer les tâches d\'un autre utilisateur.'));
             return $this->redirectToRoute('task_list');
         }
