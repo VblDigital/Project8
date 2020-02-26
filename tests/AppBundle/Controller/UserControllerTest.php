@@ -32,7 +32,7 @@ class UserControllerTest extends WebTestCase
     public function testUserListActionIfAdmin()
     {
         $client = $this->setUp();
-        $crawler = $client->request('GET', '/users');
+        $client->request('GET', '/users');
 
         $this->assertSame(200, $client->getResponse()->getStatusCode());
     }

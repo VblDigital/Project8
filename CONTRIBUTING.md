@@ -8,9 +8,11 @@ Please create a new issue, if needed linked to a new Milestone, to describe what
 
 ##New branch
 Before beginning to develop, please create a new branch :
+
 ```
 git checkout -b [newBranch]
 ```
+
 The branch name has to be in relation to the subject of the new development.
 
 ##Development
@@ -18,18 +20,23 @@ Please respect the MVC pattern and do not miss to develop the tests linked to yo
 
 ##Tests
 Please launch the tests coverage with : 
+
 ```
 vendor\bin\phpunit --coverage-html web\test-coverage
 ```
+
 and check if the total coverage is up to 70%.
 
 ##Commit and push in the repository
 Add and commit your code with a clear message in relation with the content. For exemple :
+
 ```
 git add .
 git commit -m "Feature(Authentication)Added new functionnality"
 ```
+
 and push :
+
 ```
 git push origin [branch name]
 ```

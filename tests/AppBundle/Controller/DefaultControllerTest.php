@@ -30,7 +30,7 @@ class DefaultControllerTest extends WebTestCase
     public function testDisplayPageIfLogged()
     {
         $client = $this->setUp();
-        $crawler = $client->request('GET', '/');
+        $client->request('GET', '/');
 
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
     }

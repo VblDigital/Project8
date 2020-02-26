@@ -14,7 +14,7 @@ class AccessDeniedHandler implements AccessDeniedHandlerInterface
      * @param  AccessDeniedException $accessDeniedException
      * @return Response|null
      */
-    public function handle(Request $request, AccessDeniedException $accessDeniedException)
+    public function handle(Request $request, AccessDeniedException $accessDeniedException = null)
     {
         $message = "L'accès à cette page est restreint";
 

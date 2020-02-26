@@ -21,7 +21,7 @@ class TaskFixturesTest extends WebTestCase
         );
 
         $client = $this->createClient();
-        $crawler = $client->request('GET', '/users');
+        $client->request('GET', '/users');
 
         $this->assertSame(302, $client->getResponse()->getStatusCode());
     }
