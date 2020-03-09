@@ -16,8 +16,13 @@ class AccessDeniedHandler implements AccessDeniedHandlerInterface
      */
     public function handle(Request $request, AccessDeniedException $accessDeniedException = null)
     {
-        $message = "L'accès à cette page est restreint";
 
-        return new Response($message, 403);
+    ?>
+    <script>
+        alert('Cette page a un accès limité. Vous devez avoir le rôle administrateur.');
+        history.back();
+    </script>
+    <?php
+        return new Response('', 403);
     }
 }
