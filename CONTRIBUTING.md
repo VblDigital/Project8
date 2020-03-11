@@ -1,12 +1,12 @@
-#How to contribute to the project
+# How to contribute to the project
 
-##Create a local copy
+## Create a local copy
 Use [README.md](https://github.com/vbopenclass/Project8/blob/master/README.md) to install a clone of the project on local.
 
-##Issue
+## Issue
 Please create a new issue, if needed linked to a new Milestone, to describe what will be developed and the due date.
 
-##New branch
+## New branch
 Before beginning to develop, please create a new branch :
 
 ```
@@ -15,10 +15,10 @@ git checkout -b [newBranch]
 
 The branch name has to be in relation to the subject of the new development.
 
-##Development
+## Development
 Please respect the MVC pattern and do not miss to develop the tests linked to your new code.
 
-##Tests
+## Tests
 Please launch the tests coverage with : 
 
 ```
@@ -27,7 +27,7 @@ vendor\bin\phpunit --coverage-html web\test-coverage
 
 and check if the total coverage is up to 70%.
 
-##Commit and push in the repository
+## Commit and push in the repository
 Add and commit your code with a clear message in relation with the content. For exemple :
 
 ```
@@ -36,12 +36,11 @@ git commit -m "Feature(Authentication)Added new functionnality"
 ```
 
 and push :
-
 ```
 git push origin [branch name]
 ```
 
-##Pull Request
+## Pull Request
 Open a new pull request and link it to the issue and if applicable to the Milestone.
 
 Standards to apply
