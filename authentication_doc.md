@@ -20,7 +20,7 @@ The interface's users are represented by a User entity. It implements the UserIn
 
 ## Setup security.yml
 
-### Provider :
+### Provider
 
 ```
 security:
@@ -33,7 +33,7 @@ security:
 
 Indicates to Symfony where can be found the user, in User entity and the defines which attribute is used for authentication.
 
-### Password encryption :
+### Password encryption
 
 ```
 security:
@@ -43,7 +43,7 @@ security:
 
 Bcrypt encoder is used to encrypt the passwords before recording in Database
 
-### Firewall :
+### Firewall
 
 ```
 security:
