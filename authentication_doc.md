@@ -20,7 +20,7 @@ The interface's users are represented by a User entity. It implements the UserIn
 
 ## Setup security.yml
 
-###Provider :
+### Provider :
 
 ```
 security:
@@ -33,7 +33,7 @@ security:
 
 Indicates to Symfony where can be found the user, in User entity and the defines which attribute is used for authentication.
 
-###Password encryption :
+### Password encryption :
 
 ```
 security:
@@ -43,7 +43,7 @@ security:
 
 Bcrypt encoder is used to encrypt the passwords before recording in Database
 
-###Firewall :
+### Firewall :
 
 ```
 security:
@@ -66,7 +66,7 @@ security:
 
 The firewall defines the authentication's process. The credentials are entered in the form_login with the route login_pah : login.
 
-###Roles hierarchy
+### Roles hierarchy
 
 ```
 security:
@@ -76,7 +76,7 @@ security:
 
 indicates that the ROLE_ADMIN has the same rights than the ROLE_USER and above.
 
-###Access control
+### Access control
 
 ```
 security:
@@ -91,10 +91,10 @@ The access control is set here :
 *   the path /users only to logged user with the ROLE_ADMIN
 *   the path / to all logged users
 
-##Security Controller
+## Security Controller
 The SecurityController : namespace AppBundle\Controller defines how works the authentication process and the error message sent to the View. 
 
-##Login Form
+## Login Form
 The form UserForm display the fields to be completed to create a new User :
 
 ```
